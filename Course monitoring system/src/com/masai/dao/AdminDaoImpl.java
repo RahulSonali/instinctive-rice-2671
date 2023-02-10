@@ -152,13 +152,14 @@ public class AdminDaoImpl implements AdminDao {
 		
 		try(Connection conn = DBUtil.provideConnection()) {
 			
-			PreparedStatement ps = conn.prepareStatement("insert into batch (courseId,facultyId,numberOfStudents,batchStartDate,duration) values (?,?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("insert into batch (courseId,batchName,facultyId,numberOfStudents,batchStartDate,duration) values (?,?,?,?,?,?)");
 			
 			ps.setInt(1, batch.getCourseId());
-			ps.setInt(2, batch.getFacultyId());
-			ps.setInt(3, batch.getNumberOfStudents());
-			ps.setString(4, batch.getBatchStartDate());
-			ps.setString(5, batch.getDuration());
+			ps.setString(2,batch.getBatchName());
+			ps.setInt(3, batch.getFacultyId());
+			ps.setInt(4, batch.getNumberOfStudents());
+			ps.setString(5, batch.getBatchStartDate());
+			ps.setString(6, batch.getDuration());
 			
 			int x = ps.executeUpdate();
 			
@@ -219,13 +220,14 @@ public class AdminDaoImpl implements AdminDao {
 			while(rs.next()) {
 				
 				int batchId = rs.getInt("batchId");
+				String batchName=rs.getNString("batchName");
 				int courseId = rs.getInt("courseId");
 				int facultyId = rs.getInt("facultyId");
 				int noOfStud = rs.getInt("numberOfStudents");
 				String batchStartDate = rs.getString("batchStartDate");
 				String duration =rs.getString("duration");
 				
-				Batch batch = new Batch(batchId,courseId,facultyId,noOfStud,batchStartDate,duration);
+				Batch batch = new Batch(batchId,batchName,courseId,facultyId,noOfStud,batchStartDate,duration);
 				list.add(batch);
 				
 			}

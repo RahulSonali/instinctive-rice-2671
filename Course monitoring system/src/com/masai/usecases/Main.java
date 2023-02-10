@@ -159,7 +159,7 @@ public class Main {
 						System.out.println();
 						System.out.println("You Want to Exit (y/n)");
 						String s = sc.next();
-						if(s.compareToIgnoreCase("n")==0) {
+						if(s.compareToIgnoreCase("y")==0) {
 							break;
 						}else {
 							continue;
@@ -226,7 +226,7 @@ public class Main {
 						System.out.println();
 						System.out.println("You Want to Exit (y/n)");
 						String s = sc.next();
-						if(s.compareToIgnoreCase("Y")==0) {
+						if(s.compareToIgnoreCase("y")==0) {
 							break;
 						}else {
 							continue;

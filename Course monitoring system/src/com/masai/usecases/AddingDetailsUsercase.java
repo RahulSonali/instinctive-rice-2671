@@ -16,12 +16,12 @@ public class AddingDetailsUsercase {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Enter Cours");
-		String name = sc.next();
+		System.out.println("Enter Course name");
+		String name = sc.nextLine();
 //		sc.nextLine();
 
 		System.out.println("Enter Course Description");
-		String desc = sc.next();
+		String desc = sc.nextLine();
 
 		System.out.println("Enter Course Fee");
 		int fee = sc.nextInt();
@@ -43,8 +43,10 @@ public class AddingDetailsUsercase {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Enter Course id...");
+		System.out.println("Enter batch id...");
 		int cid = sc.nextInt();
+		System.out.println("Enter batch name...");
+		String batchName = sc.next();
 		System.out.println("Enter faculty id...");
 		int fid = sc.nextInt();
 
@@ -61,16 +63,18 @@ public class AddingDetailsUsercase {
 
 		Batch batch = new Batch();
 		batch.setCourseId(cid);
+		batch.setBatchName(batchName);
 		batch.setNumberOfStudents(noOfStu);
 		batch.setBatchStartDate(date);
-		batch.setDuration(duration);
+		
 		batch.setFacultyId(fid);
+		batch.setDuration(duration);
 
 		AdminDao ad = new AdminDaoImpl();
 		String str = ad.createNewBatch(batch);
 		System.out.println(str);
 		
-		//.close();
+//		sc.close();
 	}
 	
 	public static void createFaculty() throws AdminException {
